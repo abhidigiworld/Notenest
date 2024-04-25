@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import image from '../assets/pic.png';
 import './Login.css';
+import { Link } from 'react-router-dom';
 
 const Login = () => {
     const [email, setEmail] = useState('');
@@ -23,6 +24,12 @@ const Login = () => {
 
     return (
         <>
+            <div className="headings">
+                <Link to={"/"}><h1>NoteNest Website</h1>
+                    <div className="quote-container">
+                        <p>Explore the NoteNest website and Unlock your creativity, one note at a time.</p>
+                    </div></Link>
+            </div>
             <div className="main">
                 <div className="left">
                     <img src={image} alt="image " />
@@ -37,7 +44,7 @@ const Login = () => {
                             value={email}
                             onChange={(e) => {
                                 setEmail(e.target.value);
-                                handleInputChange(); 
+                                handleInputChange();
                             }}
                         />
                         <input
@@ -46,7 +53,7 @@ const Login = () => {
                             value={password}
                             onChange={(e) => {
                                 setPassword(e.target.value);
-                                handleInputChange(); 
+                                handleInputChange();
                             }}
                         />
                         <button type="submit">Login</button>

@@ -25,6 +25,12 @@ const Signup = () => {
 
   return (
     <>
+      <div className="headings">
+        <Link to={"/"}><h1>NoteNest Website</h1>
+          <div className="quote-container">
+            <p>Explore the NoteNest website and Unlock your creativity, one note at a time.</p>
+          </div></Link>
+      </div>
       <div className="main">
         <div className="left">
           <img src={image} alt="" />
