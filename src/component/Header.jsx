@@ -1,10 +1,11 @@
 import React from 'react';
+import logo from '../assets/logo.png'
 
 function Header() {
   return (
     <div className="bg-gray-100 p-4 flex justify-between items-center">
       <div className="flex items-center">
-        <img src="logo.png" alt="Notenest Logo" className="h-8 mr-2" />
+        <img src={logo} alt="Notenest Logo" className="h-8 mr-2" />
         <span className="text-lg font-semibold">Notenest</span>
       </div>
       <div className="flex space-x-4">
