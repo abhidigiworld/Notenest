@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import image from '../assets/pic.png';
+import { Link } from 'react-router-dom';
 
 const Signup = () => {
   const [email, setEmail] = useState('');
@@ -29,7 +30,8 @@ const Signup = () => {
         <Link to={"/"}><h1>NoteNest Website</h1>
           <div className="quote-container">
             <p>Explore the NoteNest website and Unlock your creativity, one note at a time.</p>
-          </div></Link>
+          </div>
+        </Link>
       </div>
       <div className="main">
         <div className="left">
