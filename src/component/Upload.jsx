@@ -83,7 +83,7 @@ function Upload() {
             <textarea id="noteDescription" name="noteDescription" value={formData.noteDescription} onChange={handleChange} rows="4" className="w-full px-4 py-2 border rounded-md focus:outline-none focus:border-blue-500"></textarea>
             {errors.noteDescription && <p className="text-red-500">{errors.noteDescription}</p>}
           </div>
-          <button type="submit" className="bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600 transition duration-300 focus:outline-none">Submit</button>
+          <button type="submit" className="w-full bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600 transition duration-300 focus:outline-none">Submit</button>
         </form>
       </div>
       <Footer/>
