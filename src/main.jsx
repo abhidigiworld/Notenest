@@ -11,6 +11,7 @@ import Main1 from './component/Main1.jsx'
 import About from './component/About.jsx'
 import Upload from './component/Upload.jsx'
 import Note from './component/Note.jsx'
+import Placement from './component/Placement.jsx'
 
 
 const router= createBrowserRouter([
@@ -45,6 +46,10 @@ const router= createBrowserRouter([
   {
     path:"/Note",
     element:<Note/>
+  },
+  {
+    path:"/Placement",
+    element:<Placement/>
   }
 ])
 

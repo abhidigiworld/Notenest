@@ -41,11 +41,13 @@ function Main1() {
               <p className="mt-2 text-gray-600">This is a regular note. It contains general information about the subject.</p>
             </div>
           </Link>
-          <div className="bg-white p-6 rounded-md shadow-md text-center">
-            <h2 className="text-2xl font-semibold text-gray-800">Placement Preparation Notes</h2>
-            <p className="mt-2 text-gray-600"> It contains specific information
-              tailored for interviews, exams, or job applications.</p>
-          </div>
+          <Link to={"/Placement"}>
+            <div className="bg-white p-6 rounded-md shadow-md text-center">
+              <h2 className="text-2xl font-semibold text-gray-800">Placement Preparation Notes</h2>
+              <p className="mt-2 text-gray-600"> It contains specific information
+                tailored for interviews, exams, or job applications.</p>
+            </div>
+          </Link>
         </div>
       </div>
       <Footer />
