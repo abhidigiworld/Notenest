@@ -18,8 +18,8 @@ function Main1() {
 
   return (
     <>
-    <Header/>
-      <div>
+      <Header />
+      <div className="bg-gray-100 py-8">
         <div className="max-w-4xl mx-auto">
           <Slider {...sliderSettings}>
             <div>
@@ -34,18 +34,17 @@ function Main1() {
           </Slider>
         </div>
         <div className="max-w-4xl mx-auto mt-8 grid grid-cols-1 md:grid-cols-2 gap-4">
-          <div className="bg-white p-4 rounded-md shadow-md">
-            <h2 className="text-xl font-semibold">Note</h2>
-            <p className="mt-2">Some description about notes...</p>
+          <div className="bg-white p-6 rounded-md shadow-md">
+            <h2 className="text-2xl font-semibold text-gray-800">Note</h2>
+            <p className="mt-2 text-gray-600">Some description about notes...</p>
           </div>
-          <div className="bg-white p-4 rounded-md shadow-md">
-            <h2 className="text-xl font-semibold">Placement Preparation Notes</h2>
-            <p className="mt-2">Some description about placement preparation notes...</p>
+          <div className="bg-white p-6 rounded-md shadow-md">
+            <h2 className="text-2xl font-semibold text-gray-800">Placement Preparation Notes</h2>
+            <p className="mt-2 text-gray-600">Some description about placement preparation notes...</p>
           </div>
-          {/* Add more cards as needed */}
         </div>
       </div>
-      <Footer/>
+      <Footer />
     </>
   );
 }

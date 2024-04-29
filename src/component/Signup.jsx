@@ -37,7 +37,7 @@ const Signup = () => {
       <div className="flex justify-center items-center h-screen">
         <div className="max-w-md w-full p-6 border rounded-lg bg-gray-100">
           <div className="flex justify-center mb-6">
-            <img src={image} alt="image" className="w-24" />
+            <img src={image} alt="image" className="w-25" />
           </div>
           <form onSubmit={handleSubmit}>
             <h2 className="text-2xl mb-4 text-center">Sign Up</h2>

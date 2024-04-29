@@ -12,7 +12,7 @@ const Login = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
         if (email.trim() === '' || password.trim() === '') {
-            setErrorMessage('Please fill out all fields');
+            setErrorMessage('Please fill out all fields ☠');
         } else {
             //when we create backend at that time i add the logic for it
             navigate("/Main1");
@@ -39,7 +39,7 @@ const Login = () => {
                     <img src={image} alt="image" className="w-full mb-4" />
                     <form onSubmit={handleSubmit}>
                         <h2 className="text-2xl mb-4 text-center">Login</h2>
-                        {errorMessage && <div className="text-red-500">{errorMessage}</div>}
+                        {errorMessage && <div className="text-red-500 text-2xl">{errorMessage}</div>}
                         <input
                             type="text"
                             placeholder="Username"
