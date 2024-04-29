@@ -9,6 +9,7 @@ import Signup from './component/Signup.jsx'
 import Start from './component/Start.jsx'
 import Main1 from './component/Main1.jsx'
 import About from './component/About.jsx'
+import Upload from './component/Upload.jsx'
 
 
 const router= createBrowserRouter([
@@ -35,6 +36,10 @@ const router= createBrowserRouter([
   {
     path:"/About",
     element:<About/>
+  },
+  {
+    path:"/Upload",
+    element:<Upload/>
   }
 ])
 

@@ -21,7 +21,9 @@ function Header() {
                     </button>
                 </Link>
                 <button className="bg-blue-500 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded">
-                    Upload Notes
+                    <Link to={"/Upload"}>
+                    Upload
+                    </Link>
                 </button>
                 <button className="bg-blue-500 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded">
                     <Link to={"/Main1"}>
