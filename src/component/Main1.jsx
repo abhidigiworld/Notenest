@@ -4,6 +4,7 @@ import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import Header from './Header';
 import Footer from './Footer';
+import { Link } from 'react-router-dom';
 
 function Main1() {
   const sliderSettings = {
@@ -34,13 +35,16 @@ function Main1() {
           </Slider>
         </div>
         <div className="max-w-4xl mx-auto mt-8 grid grid-cols-1 md:grid-cols-2 gap-4">
-          <div className="bg-white p-6 rounded-md shadow-md">
-            <h2 className="text-2xl font-semibold text-gray-800">Note</h2>
-            <p className="mt-2 text-gray-600">Some description about notes...</p>
-          </div>
-          <div className="bg-white p-6 rounded-md shadow-md">
+          <Link to={"/Note"}>
+            <div className="bg-white p-6 rounded-md shadow-md text-center">
+              <h2 className="text-2xl font-semibold text-gray-800">Note</h2>
+              <p className="mt-2 text-gray-600">This is a regular note. It contains general information about the subject.</p>
+            </div>
+          </Link>
+          <div className="bg-white p-6 rounded-md shadow-md text-center">
             <h2 className="text-2xl font-semibold text-gray-800">Placement Preparation Notes</h2>
-            <p className="mt-2 text-gray-600">Some description about placement preparation notes...</p>
+            <p className="mt-2 text-gray-600"> It contains specific information
+              tailored for interviews, exams, or job applications.</p>
           </div>
         </div>
       </div>

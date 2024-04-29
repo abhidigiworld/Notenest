@@ -6,7 +6,7 @@ function Upload() {
   const [formData, setFormData] = useState({
     noteLink: '',
     authorName: '',
-    noteType: '', // Updated to include noteType
+    noteType: '', 
     noteTitle: '',
     noteDescription: '',
   });
