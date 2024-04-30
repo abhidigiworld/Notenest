@@ -1,14 +1,19 @@
 import React, { useState } from 'react';
+import axios from 'axios'; // Import Axios
 import image from '../assets/pic.png';
 import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
+
+// Signup page
 
 const Signup = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
+  const navigate=useNavigate();
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (
       email.trim() === '' ||
@@ -19,8 +24,25 @@ const Signup = () => {
     } else if (password !== confirmPassword) {
       setErrorMessage('Passwords do not match');
     } else {
-      setErrorMessage(''); // Clear error message if all fields are filled and passwords match
-      // Perform sign up logic here when you add the backend integration
+      setErrorMessage('');
+
+      try {
+        const response = await axios.post('/signup', { 
+          email,
+          password,
+        });
+        alert(response.data.message); 
+        if (response.data.success) {
+          navigate('/login');
+        }
+      } catch (error) {
+        console.error('Error:', error);
+        if (error.response) {
+          setErrorMessage(error.response.data.error);
+        } else {
+          setErrorMessage('An error occurred. Please try again later.');
+        }
+      }
     }
   };
 
@@ -39,7 +61,7 @@ const Signup = () => {
           <div className="flex justify-center mb-6">
             <img src={image} alt="image" className="w-25" />
           </div>
-          <form onSubmit={handleSubmit}>
+          <form onSubmit={handleSubmit} method='post'>
             <h2 className="text-2xl mb-4 text-center">Sign Up</h2>
             {errorMessage && <div className="text-red-500 mb-4">{errorMessage}</div>}
             <input
