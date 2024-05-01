@@ -27,12 +27,14 @@ const Signup = () => {
       setErrorMessage('');
 
       try {
-        const response = await axios.post('/signup', { 
+        const response = await axios.post('http://localhost:3000/signup', { 
           email,
           password,
         });
-        alert(response.data.message); 
-        if (response.data.success) {
+        if(response.status===200){
+          alert("Data saved successfully");
+        } 
+        if (response.status===200) {
           navigate('/login');
         }
       } catch (error) {

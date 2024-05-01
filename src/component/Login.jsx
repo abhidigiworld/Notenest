@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import image from '../assets/pic.png';
 import { Link } from 'react-router-dom';
 import { useNavigate } from "react-router-dom";
+import axios from 'axios'; // Import Axios
 
 const Login = () => {
     const [email, setEmail] = useState('');
@@ -9,17 +10,26 @@ const Login = () => {
     const [errorMessage, setErrorMessage] = useState('');
     const navigate = useNavigate();
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => { 
         e.preventDefault();
         if (email.trim() === '' || password.trim() === '') {
             setErrorMessage('Please fill out all fields ☠');
         } else {
-            //when we create backend at that time i add the logic for it
-            navigate("/Main1");
+            try {
+                const response = await axios.post('http://localhost:3000/login', { email, password });
+                if (response.status === 200) {
+                    navigate("/Main1");
+                }
+                else {
+                    setErrorMessage('There is an error'); 
+                }
+            } catch (error) {
+                console.error('Error logging in:', error);
+                setErrorMessage('An error occurred. Please try again later.');
+            }
         }
     };
 
-    // Function to clear error message when user starts typing
     const handleInputChange = () => {
         setErrorMessage('');
     };
