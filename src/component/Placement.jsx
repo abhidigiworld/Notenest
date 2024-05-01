@@ -23,6 +23,9 @@ function Placement() {
                             <h3 className="text-lg font-semibold mb-2">Author Name: {note['authorName']}</h3>
                             <p className="text-gray-600 mb-2">Note Title: {note['noteTitle']}</p>
                             <p className="text-gray-600">Note Description: {note['noteDescription']}</p>
+                            <button className="bg-blue-500 text-white py-2 px-4 rounded-md mt-2">
+                                <a href={note['noteLink']} target="_blank" rel="noopener noreferrer">Open Link</a>
+                            </button>
                         </div>
                     ))}
                 </div>
