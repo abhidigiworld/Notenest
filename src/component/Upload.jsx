@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import Header from './Header';
 import Footer from './Footer';
+import { useNavigate } from 'react-router-dom';
+import axios from 'axios'; 
 
 function Upload() {
   const [formData, setFormData] = useState({
@@ -10,7 +12,7 @@ function Upload() {
     noteTitle: '',
     noteDescription: '',
   });
-
+  const navigate=useNavigate();
   const [errors, setErrors] = useState({});
 
   const handleChange = (e) => {
@@ -21,7 +23,7 @@ function Upload() {
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     // Form validation
     const errors = {};
@@ -44,7 +46,25 @@ function Upload() {
 
     // If no errors, submit form data to the backend
     if (Object.keys(errors).length === 0) {
-      console.log(formData);
+      
+      // Send form data to the backend
+      try {
+        const response = await axios.post('http://localhost:3000/Upload',formData);
+        if(response.status===200){
+          alert("Data saved successfully");
+        } 
+        if (response.status===200) {
+          navigate('/Note');
+        }
+      } catch (error) {
+        console.error('Error:', error);
+        if (error.response) {
+          setErrorMessage(error.response.data.error);
+        } else {
+          setErrorMessage('An error occurred. Please try again later.');
+        }
+      }
+      
     }
   };
 

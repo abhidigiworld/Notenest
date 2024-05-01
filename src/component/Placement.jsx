@@ -10,7 +10,7 @@ function Placement() {
         setNotes(mockData);
     }, []);
 
-    const placementNotes = notes.filter(note => !note['Note Type']);
+    const placementNotes = notes.filter(note => note['noteType'] === 'placementPreparation');
 
     return (
         <>
@@ -20,9 +20,9 @@ function Placement() {
                 <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
                     {placementNotes.map((note, index) => (
                         <div className="bg-white p-4 rounded-lg shadow-md" key={index}>
-                            <h3 className="text-lg font-semibold mb-2">Author Name: {note['Author Name']}</h3>
-                            <p className="text-gray-600 mb-2">Note Title: {note['Title']}</p>
-                            <p className="text-gray-600">Note Description: {note['Description']}</p>
+                            <h3 className="text-lg font-semibold mb-2">Author Name: {note['authorName']}</h3>
+                            <p className="text-gray-600 mb-2">Note Title: {note['noteTitle']}</p>
+                            <p className="text-gray-600">Note Description: {note['noteDescription']}</p>
                         </div>
                     ))}
                 </div>

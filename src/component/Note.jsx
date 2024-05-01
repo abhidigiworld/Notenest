@@ -10,7 +10,7 @@ function Note() {
         setNotes(mockData);
     }, []);
 
-    const filteredNotes = notes.filter(note => note['Note Type']);
+    const filteredNotes = notes.filter(note => note['noteType'] === 'regular');
 
     return (
         <>
@@ -20,9 +20,12 @@ function Note() {
                 <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
                     {filteredNotes.map((note, index) => (
                         <div className="bg-white p-4 rounded-lg shadow-md" key={index}>
-                            <h3 className="text-lg font-semibold mb-2">Author Name: {note['Author Name']}</h3>
-                            <p className="text-gray-600 mb-2">Note Title: {note['Title']}</p>
-                            <p className="text-gray-600">Note Description: {note['Description']}</p>
+                            <h3 className="text-lg font-semibold mb-2">Author Name: {note['authorName']}</h3>
+                            <p className="text-gray-600 mb-2">Note Title: {note['noteTitle']}</p>
+                            <p className="text-gray-600">Note Description: {note['noteDescription']}</p>
+                            <button className="bg-blue-500 text-white py-2 px-4 rounded-md mt-2">
+                                <a href={note['noteLink']} target="_blank" rel="noopener noreferrer">Open Link</a>
+                            </button>
                         </div>
                     ))}
                 </div>
