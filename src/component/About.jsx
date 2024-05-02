@@ -37,7 +37,7 @@ function About() {
 
         try {
             // Send email using Axios
-            await axios.post('http://localhost:3000/sendmail', formData);
+            await axios.post('https://backendnotenest.onrender.com/sendmail', formData);
             alert('Email sent successfully!');
           
             setFormData({

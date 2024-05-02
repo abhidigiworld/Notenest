@@ -7,7 +7,7 @@ function Note() {
     const [notes, setNotes] = useState([]);
 
     useEffect(() => {
-        axios.get('http://localhost:3000/filedata')
+        axios.get('https://backendnotenest.onrender.com/filedata')
           .then(response => {
             const mockData = response.data;
             setNotes(mockData);

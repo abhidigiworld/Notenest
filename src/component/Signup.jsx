@@ -27,7 +27,7 @@ const Signup = () => {
       setErrorMessage('');
 
       try {
-        const response = await axios.post('http://localhost:3000/signup', { 
+        const response = await axios.post('https://backendnotenest.onrender.com/signup', { 
           email,
           password,
         });

@@ -16,7 +16,7 @@ const Login = () => {
             setErrorMessage('Please fill out all fields ☠');
         } else {
             try {
-                const response = await axios.post('http://localhost:3000/login', { email, password });
+                const response = await axios.post('https://backendnotenest.onrender.com/login', { email, password });
                 if (response.status === 200) {
                     navigate("/Main1");
                 }
