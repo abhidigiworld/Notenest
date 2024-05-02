@@ -1,9 +1,57 @@
-import React from 'react';
+import React, { useState } from 'react';
+import axios from 'axios';
 import imageOfYourself from '../assets/pic.png';
 import Header from './Header';
 import Footer from './Footer';
 
 function About() {
+    const [formData, setFormData] = useState({
+        name: '',
+        email: '',
+        message: ''
+    });
+
+    const [errors, setErrors] = useState({});
+
+    const handleChange = (e) => {
+        setFormData({ ...formData, [e.target.name]: e.target.value });
+    };
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+
+        const validationErrors = {};
+        if (!formData.name.trim()) {
+            validationErrors.name = 'Name is required';
+        }
+        if (!formData.email.trim()) {
+            validationErrors.email = 'Email is required';
+        }
+        if (!formData.message.trim()) {
+            validationErrors.message = 'Message is required';
+        }
+        if (Object.keys(validationErrors).length > 0) {
+            setErrors(validationErrors);
+            return;
+        }
+
+        try {
+            // Send email using Axios
+            await axios.post('http://localhost:3000/sendmail', formData);
+            alert('Email sent successfully!');
+          
+            setFormData({
+                name: '',
+                email: '',
+                message: ''
+            });
+            setErrors({});
+        } catch (error) {
+            console.error('Error sending email:', error);
+            alert('Failed to send email. Please try again later.');
+        }
+    };
+
     return (
         <>
             <Header />
@@ -25,18 +73,21 @@ function About() {
        
                     <div className="mt-8 bg-white p-6 rounded-xl shadow-xl">
                         <h2 className="text-2xl font-bold mb-4 text-center">Contact Me</h2>
-                        <form className="max-w-lg mx-auto">
+                        <form className="max-w-lg mx-auto" onSubmit={handleSubmit}>
                             <div className="mb-4">
                                 <label htmlFor="name" className="block mb-2">Name:</label>
-                                <input type="text" id="name" name="name" placeholder="Your name" className="w-full px-4 py-2 border rounded-md focus:outline-none focus:border-blue-500" />
+                                <input type="text" id="name" name="name" value={formData.name} onChange={handleChange} placeholder="Your name" className="w-full px-4 py-2 border rounded-md focus:outline-none focus:border-blue-500" />
+                                {errors.name && <p className="text-red-500">{errors.name}</p>}
                             </div>
                             <div className="mb-4">
                                 <label htmlFor="email" className="block mb-2">Email:</label>
-                                <input type="email" id="email" name="email" placeholder="Your email" className="w-full px-4 py-2 border rounded-md focus:outline-none focus:border-blue-500" />
+                                <input type="email" id="email" name="email" value={formData.email} onChange={handleChange} placeholder="Your email" className="w-full px-4 py-2 border rounded-md focus:outline-none focus:border-blue-500" />
+                                {errors.email && <p className="text-red-500">{errors.email}</p>}
                             </div>
                             <div className="mb-4">
                                 <label htmlFor="message" className="block mb-2">Message:</label>
-                                <textarea id="message" name="message" placeholder="Your message" rows="4" className="w-full px-4 py-2 border rounded-md focus:outline-none focus:border-blue-500"></textarea>
+                                <textarea id="message" name="message" value={formData.message} onChange={handleChange} placeholder="Your message" rows="4" className="w-full px-4 py-2 border rounded-md focus:outline-none focus:border-blue-500"></textarea>
+                                {errors.message && <p className="text-red-500">{errors.message}</p>}
                             </div>
                             <button type="submit" className="bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600 transition duration-300 focus:outline-none mx-auto block">Submit</button>
                         </form>

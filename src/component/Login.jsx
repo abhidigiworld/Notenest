@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import image from '../assets/pic.png';
 import { Link } from 'react-router-dom';
 import { useNavigate } from "react-router-dom";
-import axios from 'axios'; // Import Axios
+import axios from 'axios'; 
 
 const Login = () => {
     const [email, setEmail] = useState('');

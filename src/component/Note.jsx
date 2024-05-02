@@ -1,13 +1,20 @@
 import React, { useState, useEffect } from 'react';
-import mockData from '../MOCK_DATA.json';
 import Header from './Header';
 import Footer from './Footer';
+import axios from 'axios'; 
 
 function Note() {
     const [notes, setNotes] = useState([]);
 
     useEffect(() => {
-        setNotes(mockData);
+        axios.get('http://localhost:3000/filedata')
+          .then(response => {
+            const mockData = response.data;
+            setNotes(mockData);
+          })
+          .catch(error => {
+            console.error('Error fetching data:', error);
+          });
     }, []);
 
     const filteredNotes = notes.filter(note => note['noteType'] === 'regular');

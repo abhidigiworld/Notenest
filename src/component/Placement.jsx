@@ -1,16 +1,23 @@
 import React, { useState, useEffect } from 'react';
-import mockData from '../MOCK_DATA.json';
 import Header from './Header';
 import Footer from './Footer';
+import axios from 'axios';
 
 function Placement() {
     const [notes, setNotes] = useState([]);
 
     useEffect(() => {
-        setNotes(mockData);
+        axios.get('http://localhost:3000/filedata')
+            .then(response => {
+                const mockData = response.data;
+                setNotes(mockData);
+            })
+            .catch(error => {
+                console.log("There is an error in fetching the data ", error);
+            });
     }, []);
 
-    const placementNotes = notes.filter(note => note['noteType'] === 'placementPreparation');
+    const placementNotes = notes.filter(note => note && note['noteType'] === 'placementPreparation');
 
     return (
         <>
