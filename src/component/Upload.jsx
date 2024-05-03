@@ -2,18 +2,19 @@ import React, { useState } from 'react';
 import Header from './Header';
 import Footer from './Footer';
 import { useNavigate } from 'react-router-dom';
-import axios from 'axios'; 
+import axios from 'axios';
 
 function Upload() {
   const [formData, setFormData] = useState({
     noteLink: '',
     authorName: '',
-    noteType: '', 
+    noteType: '',
     noteTitle: '',
     noteDescription: '',
   });
-  const navigate=useNavigate();
+  const navigate = useNavigate();
   const [errors, setErrors] = useState({});
+  const [errorMessage, setErrorMessage] = useState('');
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -25,7 +26,6 @@ function Upload() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    // Form validation
     const errors = {};
     if (!formData.noteLink) {
       errors.noteLink = 'Note Link is required';
@@ -44,16 +44,11 @@ function Upload() {
     }
     setErrors(errors);
 
-    // If no errors, submit form data to the backend
     if (Object.keys(errors).length === 0) {
-      
-      // Send form data to the backend
       try {
-        const response = await axios.post('http://localhost:3000/Upload',formData);
-        if(response.status===200){
+        const response = await axios.post('https://backendnotenest.onrender.com/Upload', formData);
+        if (response.status === 200) {
           alert("Data saved successfully");
-        } 
-        if (response.status===200) {
           navigate('/Note');
         }
       } catch (error) {
@@ -64,7 +59,6 @@ function Upload() {
           setErrorMessage('An error occurred. Please try again later.');
         }
       }
-      
     }
   };
 
@@ -105,8 +99,9 @@ function Upload() {
           </div>
           <button type="submit" className="w-full bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600 transition duration-300 focus:outline-none">Submit</button>
         </form>
+        {errorMessage && <p className="text-red-500">{errorMessage}</p>}
       </div>
-      <Footer/>
+      <Footer />
     </>
   );
 }
